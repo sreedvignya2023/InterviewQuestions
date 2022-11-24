@@ -1,0 +1,139 @@
+1 package devops;
+ 
+2 
+ 
+3 import java.io.BufferedReader;
+ 
+4 import java.io.IOException;
+ 
+5 import java.io.InputStreamReader;
+ 
+6 public class FizzBuzz {
+ 
+7 
+ 
+8      String[] units = { "", "One", "Two", "Three", "Four",
+ 
+9             "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
+ 
+10             "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen",
+ 
+11             "Eighteen", "Nineteen" };
+ 
+12 
+ 
+13     String[] tens = { 
+ 
+14             "",         // 0
+ 
+15             "",        // 1
+ 
+16             "Twenty",     // 2
+ 
+17             "Thirty",     // 3
+ 
+18             "Forty",     // 4
+ 
+19             "Fifty",     // 5
+ 
+20             "Sixty",     // 6
+ 
+21             "Seventy",    // 7
+ 
+22             "Eighty",     // 8
+ 
+23             "Ninety"     // 9
+ 
+24     };
+ 
+25 
+ 
+26     public String convert(int n) {
+ 
+27         
+ 
+28 
+ 
+29         if (n < 20) {
+ 
+30             return units[n];
+ 
+31         }
+ 
+32 
+ 
+33         else if (n < 100) { 
+ 
+34             return (tens[n / 10] + ((n % 10 != 0) ? " " : "") + units[n % 10]);
+ 
+35         }
+ 
+36 
+ 
+37         
+ 
+38         else{ 
+ 
+39             
+ 
+40             return units[n / 100] + " Hundred" + ((n % 100 != 0) ? " " : "") + convert(n % 100);
+ 
+41         }
+ 
+42         
+ 
+43 
+ 
+44     }
+ 
+45     
+ 
+46     public static void main(String[] args) throws IOException {
+ 
+47         
+ 
+48         FizzBuzz numberWords=new FizzBuzz() ;
+ 
+49         BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+ 
+50     
+ 
+51         while( true ) {
+ 
+52                 System.out.print( "Enter number (0 to exit): " ) ;
+ 
+53                 String value = reader.readLine() ;
+ 
+54                 int number = Integer.parseInt( value ) ; 
+ 
+55                 if(number == 0) {
+ 
+56                     System.out.println("Bye");
+ 
+57                     return;
+ 
+58                 }
+ 
+59                 else if(number<0 || number>=1000)
+ 
+60                 {
+ 
+61                     System.out.println("Invalid number");
+ 
+62                     return;
+ 
+63                 }
+ 
+64                 else{
+ 
+65                 String result = numberWords.convert(number);
+ 
+66                 System.out.println(result);
+ 
+67                 }
+ 
+68             } 
+ 
+69         }
+ 
+70     } 

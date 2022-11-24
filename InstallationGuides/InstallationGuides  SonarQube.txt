@@ -1,0 +1,18 @@
+#Login with root user and run below commands
+
+sudo su -
+apt update
+apt install default-jdk unzip
+exit
+
+#Login with Non-Root User and run below commands(ubuntu)
+
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip sonarqube-9.4.0.54424.zip 
+ls -lart
+mv sonarqube-9.4.0.54424 sonarqube
+rm sonarqube-9.4.0.54424.zip
+cd sonarqube/bin/linux-x86-64/
+./sonar.sh start
+
+#Then Start Accessing SonarQube using URL 	http://<IP-Address>:9000
